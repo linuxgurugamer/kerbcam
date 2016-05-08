@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
+
     public struct Key<Value> {
         public float param;
         public Value value;

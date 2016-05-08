@@ -1,4 +1,7 @@
-﻿using System;
+﻿using KerbCam.Camera;
+using KerbCam.Core;
+using KerbCam.UI;
+using System;
 using UnityEngine;
 
 namespace KerbCam {
@@ -15,7 +18,7 @@ namespace KerbCam {
         private ButtonGrid rotButtons;
 
         public ManualCameraControlGUI() {
-            var mc = State.manCamControl;
+            var mc = StateHandler.manCamControl;
             trnButtons = new ButtonGrid(new GridButton[][]{
                 new GridButton[]{
                     null,
@@ -66,7 +69,7 @@ namespace KerbCam {
 
             public void DoGUI() {
                 bool state = GUILayout.RepeatButton(
-                    label, C.UnpaddedButtonStyle, BUTTON_OPTS);
+                    label, WindowStyles.UnpaddedButtonStyle, BUTTON_OPTS);
                 if (Event.current.type != EventType.Layout) {
                     // Ignore button state on layout events.
                     movement.SetGuiState(state);
@@ -107,9 +110,9 @@ namespace KerbCam {
             return 200;
         }
 
-        internal void DoGUI() {
-            var cc = State.camControl;
-            var mc = State.manCamControl;
+        internal void DrawGUI() {
+            var cc = StateHandler.camControl;
+            var mc = StateHandler.manCamControl;
 
             GUILayout.BeginVertical(GUILayout.ExpandWidth(false)); // BEGIN toggle above movement
 
@@ -117,9 +120,9 @@ namespace KerbCam {
             bool shouldControl = GUILayout.Toggle(cc.IsControlling, "");
             if (shouldControl != cc.IsControlling) {
                 if (shouldControl) {
-                    State.manCamControl.TakeControl();
+                    StateHandler.manCamControl.TakeControl();
                 } else {
-                    State.manCamControl.LoseControl();
+                    StateHandler.manCamControl.LoseControl();
                 }
             }
             GUILayout.Label("Controlling camera");

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
     /// <summary>
     /// Utility functions for splines.
     /// </summary>

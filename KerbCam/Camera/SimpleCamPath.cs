@@ -1,7 +1,9 @@
+using KerbCam.Core;
+using KerbCam.UI;
 using System;
 using UnityEngine;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
     public class TransformPoint : IConfigNode {
         public Vector3 position;
         public Quaternion rotation;
@@ -22,6 +24,8 @@ namespace KerbCam {
             }
             ConfigUtil.Parse<float>(node, "TIMESCALE", out timescale, 1f);
         }
+
+        
 
         public void Save(ConfigNode node) {
             node.AddValue("POSITION", ConfigNode.WriteVector(position));
@@ -360,12 +364,12 @@ namespace KerbCam {
         public void StartDrawing() {
             isDrawn = true;
             drawnPathObj = new GameObject("KerbCam.SimpleCamPath: drawn path");
-            drawnPathObj.transform.parent = State.camControl.transform;
+            drawnPathObj.transform.parent = StateHandler.camControl.transform;
             drawnPathObj.transform.localPosition = Vector3.zero;
             drawnPathObj.transform.localRotation = Quaternion.identity;
             drawnPathObj.transform.localScale = Vector3.one;
 
-            var lines = (LineRenderer)drawnPathObj.AddComponent("LineRenderer");
+            var lines = drawnPathObj.AddComponent<LineRenderer>();
             lines.material = new Material(Shader.Find("Particles/Additive"));
             lines.useWorldSpace = false;
             lines.SetColors(Color.white, Color.white);
@@ -497,7 +501,7 @@ namespace KerbCam {
 
             DoUnderListControls();
 
-            if (State.developerMode) {
+            if (StateHandler.developerMode) {
                 GUILayout.BeginHorizontal(); // BEGIN rotation choice
                 GUILayout.Label("Rotation type:");
                 var rotTypes = new RotType[] {
@@ -575,8 +579,8 @@ namespace KerbCam {
             // Create key at the end.
             if (GUILayout.Button("New key")) {
                 path.AddKeyToEnd(
-                    State.camControl.SecondTransform,
-                    State.camControl.transform);
+                    StateHandler.camControl.SecondTransform,
+                    StateHandler.camControl.transform);
             }
             path.ScaleTime = GUILayout.Toggle(path.ScaleTime, "");
             GUILayout.Label("Timescale");
@@ -644,22 +648,22 @@ namespace KerbCam {
 
             if (GUILayout.Button("Set")) {
                 trnPoint = SimpleCamPath.MakeTransformPoint(
-                    State.camControl.SecondTransform,
-                    State.camControl.transform,
+                    StateHandler.camControl.SecondTransform,
+                    StateHandler.camControl.transform,
                     trnPoint.timescale);
                 trnPointChanged = true;
             }
 
             if (GUILayout.Button("View")) {
                 path.Runner.StopRunning();
-                State.manCamControl.TakeControl();
+                StateHandler.manCamControl.TakeControl();
                 path.UpdateTransform(
-                    State.camControl.FirstTransform,
-                    State.camControl.SecondTransform,
+                    StateHandler.camControl.FirstTransform,
+                    StateHandler.camControl.SecondTransform,
                     path.TimeAt(selectedKeyIndex));
             }
 
-            if (GUILayout.Button("Remove", C.DeleteButtonStyle)) {
+            if (GUILayout.Button("Remove", WindowStyles.DeleteButtonStyle)) {
                 remove = true;
             }
 

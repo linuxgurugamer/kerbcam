@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
     /// <summary>
     /// Utility functions for Quaternions.
     /// </summary>

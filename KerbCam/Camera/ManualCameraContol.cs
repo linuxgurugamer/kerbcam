@@ -1,8 +1,9 @@
-﻿using System;
+﻿using KerbCam.Core;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
 
     public enum ManualMoveType {
         TrnUp, TrnDown,
@@ -172,18 +173,18 @@ namespace KerbCam {
             int id = moves.Count;
             move.SetIdAndListener(id, HandleMoveStateChange);
             moves.Add(move);
-            State.keyBindings.ListenKeyUp(binding, move.HandleKeyUp);
-            State.keyBindings.ListenKeyDown(binding, move.HandleKeyDown);
+            StateHandler.keyBindings.ListenKeyUp(binding, move.HandleKeyUp);
+            StateHandler.keyBindings.ListenKeyDown(binding, move.HandleKeyDown);
             return move;
         }
 
         public void TakeControl() {
-            State.camControl.StartControlling(this);
+            StateHandler.camControl.StartControlling(this);
             enabled = true;
         }
 
         public void LoseControl() {
-            State.camControl.StopControlling();
+            StateHandler.camControl.StopControlling();
             enabled = false;
         }
 
@@ -208,7 +209,7 @@ namespace KerbCam {
 
         public void Update() {
             try {
-                var cc = State.camControl;
+                var cc = StateHandler.camControl;
                 // Even if the controller is already controlling, take control
                 // with this GUI. This stops any path from moving the camera if it
                 // was controlling the camera.

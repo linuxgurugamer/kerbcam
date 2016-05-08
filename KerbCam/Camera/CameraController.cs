@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
     public class CameraController : MonoBehaviour {
 
         public interface Client {
