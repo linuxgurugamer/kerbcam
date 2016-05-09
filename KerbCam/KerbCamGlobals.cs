@@ -1,6 +1,7 @@
-﻿// 
-//     Copyright (C) 2015 CYBUTEK
 // 
+//     Copyright (C) 2015 CYBUTEK - https://github.com/CYBUTEK
+//     Copyright (C) 2016 Cartman09 - https://github.com/cartman09 
+//
 //     This program is free software: you can redistribute it and/or modify
 //     it under the terms of the GNU General Public License as published by
 //     the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +36,7 @@ namespace KerbCam
         private static string settingsPath;
 
         /// <summary>
-        ///     Gets the Kerbal Engineer assembly's path including the file name.
+        ///     Gets the KerbCams assembly's path including the file name.
         /// </summary>
         public static string AssemblyFile
         {
@@ -46,7 +47,7 @@ namespace KerbCam
         }
 
         /// <summary>
-        ///     Gets the Kerbal Engineer assembly's file name.
+        ///     Gets the KerbCams assembly's file name.
         /// </summary>
         public static string AssemblyName
         {
@@ -57,7 +58,7 @@ namespace KerbCam
         }
 
         /// <summary>
-        ///     Gets the Kerbal Engineer assembly's path excluding the file name.
+        ///     Gets the KerbCams assembly's path excluding the file name.
         /// </summary>
         public static string AssemblyPath
         {

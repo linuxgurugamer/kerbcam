@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +29,7 @@ namespace KerbCam.Core
             keyBindings.AddBinding(BoundKey.KEY_TOGGLE_WINDOW,
                 new KeyBind("toggle KerbCam window",
                     // Binding required if Toolbar isn't available.
-                    !ToolbarManager.ToolbarAvailable,
+                    /*!ToolbarManager.ToolbarAvailable*/ true,
                     KeyCode.F8));
 
             // Playback controls.

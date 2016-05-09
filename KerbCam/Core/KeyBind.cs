@@ -1,4 +1,4 @@
-﻿using KerbCam.Core;
+using KerbCam.Core;
 using KSP.IO;
 using System;
 using System.Collections.Generic;

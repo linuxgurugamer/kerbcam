@@ -1,4 +1,4 @@
-﻿using KerbCam.Core;
+using KerbCam.Core;
 using KerbCam.Camera;
 using System;
 using System.Collections.Generic;
@@ -60,6 +60,11 @@ namespace KerbCam.UI
             {
                 DebugUtil.LogException(ex);
             }
+        }
+
+        protected void Update()
+        {
+            StateHandler.keyBindings.HandleEvent(Event.current);
         }
 
         protected void OnGUI()

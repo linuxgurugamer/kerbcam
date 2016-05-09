@@ -1,4 +1,4 @@
-﻿using KerbCam.Camera;
+using KerbCam.Camera;
 using KerbCam.Core;
 using KerbCam.UI;
 using System;

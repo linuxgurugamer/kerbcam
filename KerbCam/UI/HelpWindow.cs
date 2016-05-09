@@ -1,4 +1,4 @@
-﻿using KerbCam.Core;
+using KerbCam.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +39,8 @@ namespace KerbCam.UI
             " the camera position and orientation.\n",
             "\n",
             "Source is hosted at https://github.com/cartman09/kerbcam under the",
-            " BSD license."}
+            " BSD license.\n",
+            "Original code hosted at https://github.com/huin/kerbcam ."}
         );
         private string helpText;
 
@@ -102,13 +103,14 @@ namespace KerbCam.UI
 
                 GUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
+                /*
                 if (GUILayout.Button("Kerbcam on Spaceport", WindowStyles.LinkButtonStyle))
                 {
                     Application.OpenURL("http://kerbalspaceport.com/kerbcam/");
-                }
+                }*/
                 if (GUILayout.Button("Report issue", WindowStyles.LinkButtonStyle))
                 {
-                    Application.OpenURL("https://github.com/huin/kerbcam/issues");
+                    Application.OpenURL("https://github.com/cartman09/kerbcam/issues");
                 }
 
                 DrawCloseButton();

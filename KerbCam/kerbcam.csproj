@@ -57,7 +57,7 @@
     <Compile Include="Camera\SplineUtil.cs" />
     <Compile Include="ToolbarWrapper.cs" />
     <Compile Include="Camera\TransformState.cs" />
-    <Compile Include="UI\AppLauncherButton.cs" />
+    <Compile Include="UI\KerbCamLauncherButton.cs" />
     <Compile Include="UI\ConfigWindow.cs" />
     <Compile Include="UI\HelpWindow.cs" />
     <Compile Include="UI\MainWindow.cs" />

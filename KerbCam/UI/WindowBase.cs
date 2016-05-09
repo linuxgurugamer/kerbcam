@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 using UnityEngine;
 
 namespace KerbCam.UI
@@ -10,6 +7,7 @@ namespace KerbCam.UI
     {
 
         private bool visible = false;
+        private bool guiVisible = true;
 
         /// <summary>
         /// Flag for window visibility
@@ -18,7 +16,7 @@ namespace KerbCam.UI
         {
             get
             {
-                return visible;
+                return visible && guiVisible;
             }
 
             set
@@ -27,9 +25,16 @@ namespace KerbCam.UI
             }
         }
 
+        public bool GuiVisible
+        {
+            get
+            {
+                return guiVisible;
+            }
+        }
+
         public virtual void ToggleWindow()
         {            
-            bool before = visible;
             visible = !visible;
         }
 
@@ -41,6 +46,22 @@ namespace KerbCam.UI
         public virtual void ShowWindow()
         {
             visible = true;
+        }
+
+        public void onShowGameGUI()
+        {
+            guiVisible = true;
+        }
+
+        public void onHideGameGUI()
+        {
+            guiVisible = false;
+        }
+
+        protected virtual void Start()
+        {
+            GameEvents.onHideUI.Add(onHideGameGUI);
+            GameEvents.onShowUI.Add(onShowGameGUI);
         }
 
         protected void DrawCloseButton()

@@ -1,16 +1,31 @@
-﻿using KSP.UI;
+// 
+//     Copyright (C) 2015 CYBUTEK - https://github.com/CYBUTEK
+//     Copyright (C) 2016 Cartman09 - https://github.com/cartman09 
+//
+//     This program is free software: you can redistribute it and/or modify
+//     it under the terms of the GNU General Public License as published by
+//     the Free Software Foundation, either version 3 of the License, or
+//     (at your option) any later version.
+// 
+//     This program is distributed in the hope that it will be useful,
+//     but WITHOUT ANY WARRANTY; without even the implied warranty of
+//     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//     GNU General Public License for more details.
+// 
+//     You should have received a copy of the GNU General Public License
+//     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+
+using KSP.UI;
 using KSP.UI.Screens;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace KerbCam.UI
 {
     [KSPAddon(KSPAddon.Startup.Flight, false)]
-    class AppLauncherButton : MonoBehaviour
+    class KerbCamLauncherButton : MonoBehaviour
     {
         private static Texture s_IconTexture;
         private ApplicationLauncherButton m_Button;
@@ -131,6 +146,19 @@ namespace KerbCam.UI
             // subscribe event listeners
             GameEvents.onGUIApplicationLauncherReady.Add(OnGUIApplicationLauncherReady);
             GameEvents.onGUIApplicationLauncherUnreadifying.Add(OnGUIApplicationLauncherUnreadifying);
+        }
+
+        /// <summary>
+        /// Update event called every frame
+        /// </summary>
+        protected virtual void Update()
+        {
+            // TODO find out how to get the current GameGUI state
+            if (MainWindow.Instance != null && MainWindow.Instance.GuiVisible)
+            {
+                // Set the launcher button state according to the Main window visibility (could have been de/actived by kb shortcut)
+                IsOn = MainWindow.Instance.Visible;
+            }
         }
 
         protected virtual void OnDestroy()

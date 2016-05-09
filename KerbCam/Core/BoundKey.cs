@@ -1,4 +1,4 @@
-﻿
+
 namespace KerbCam.Core
 {
     public enum BoundKey

@@ -1,4 +1,4 @@
-﻿using KerbCam.Core;
+using KerbCam.Core;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
