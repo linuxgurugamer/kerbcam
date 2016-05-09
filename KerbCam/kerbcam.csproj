@@ -39,34 +39,46 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Core\BoundKey.cs" />
+    <Compile Include="Core\ExtEvent.cs" />
+    <Compile Include="Core\StateHandler.cs" />
     <Compile Include="DestructionProxy.cs" />
-    <Compile Include="ManualCameraControlGUI.cs" />
-    <Compile Include="CameraController.cs" />
-    <Compile Include="ConfigUtil.cs" />
-    <Compile Include="ConfigWindow.cs" />
-    <Compile Include="KeyBind.cs" />
-    <Compile Include="ManualCameraContol.cs" />
-    <Compile Include="PathRunner.cs" />
+    <Compile Include="KerbCamGlobals.cs" />
+    <Compile Include="UI\ManualCameraControlGUI.cs" />
+    <Compile Include="Camera\CameraController.cs" />
+    <Compile Include="Core\ConfigUtil.cs" />
+    <Compile Include="Core\KeyBind.cs" />
+    <Compile Include="Camera\ManualCameraContol.cs" />
+    <Compile Include="Camera\PathRunner.cs" />
     <Compile Include="DebugUtil.cs" />
-    <Compile Include="QuatUtil.cs" />
-    <Compile Include="SimpleCamPath.cs" />
-    <Compile Include="KerbCamCore.cs" />
-    <Compile Include="GUIHelper.cs" />
-    <Compile Include="Interpolator.cs" />
-    <Compile Include="SplineUtil.cs" />
+    <Compile Include="Camera\QuatUtil.cs" />
+    <Compile Include="Camera\SimpleCamPath.cs" />
+    <Compile Include="Camera\Interpolator.cs" />
+    <Compile Include="Camera\SplineUtil.cs" />
     <Compile Include="ToolbarWrapper.cs" />
-    <Compile Include="TransformState.cs" />
+    <Compile Include="Camera\TransformState.cs" />
+    <Compile Include="UI\KerbCamLauncherButton.cs" />
+    <Compile Include="UI\ConfigWindow.cs" />
+    <Compile Include="UI\HelpWindow.cs" />
+    <Compile Include="UI\MainWindow.cs" />
+    <Compile Include="UI\VesselSelectionWindow.cs" />
+    <Compile Include="UI\WindowBase.cs" />
+    <Compile Include="UI\WindowResizer.cs" />
+    <Compile Include="UI\WindowStyles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\..\KSP-Dev\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>E:\Games\1Steam\steamapps\common\Kerbal Space Program\KSP_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="KSPUtil">
+      <HintPath>E:\Games\1Steam\steamapps\common\Kerbal Space Program\KSP_Data\Managed\KSPUtil.dll</HintPath>
     </Reference>
     <Reference Include="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Games\KSP - Dev\KSP_Data\Managed\System.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\KSP-Dev\KSP_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>E:\Games\1Steam\steamapps\common\Kerbal Space Program\KSP_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

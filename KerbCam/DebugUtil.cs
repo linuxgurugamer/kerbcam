@@ -25,17 +25,17 @@ namespace KerbCam {
             // Root transform IDs to the root transform of that ID.
             var trnRoots = new Dictionary<int, Transform>();
             // Transform IDs to cameras using that transform.
-            var trnCams = new Dictionary<int, List<Camera>>();
+            var trnCams = new Dictionary<int, List<UnityEngine.Camera>>();
             // Transform IDs that are in the ancestry of cameras.
             var trnCamAncestors = new Dictionary<int, bool>();
-            foreach (Camera c in Camera.allCameras) {
+            foreach (UnityEngine.Camera c in UnityEngine.Camera.allCameras) {
                 Transform root = c.transform.root;
                 trnRoots[root.GetInstanceID()] = root;
 
                 int camTrnId = c.transform.GetInstanceID();
-                List<Camera> camList;
+                List<UnityEngine.Camera> camList;
                 if (!trnCams.TryGetValue(camTrnId, out camList)) {
-                    trnCams[camTrnId] = camList = new List<Camera>();
+                    trnCams[camTrnId] = camList = new List<UnityEngine.Camera>();
                 }
                 camList.Add(c);
 
@@ -64,7 +64,7 @@ namespace KerbCam {
 
         private static void AppendCameraTransform(
             StringBuilder result, int level, Transform trn,
-            Dictionary<int, List<Camera>> trnCams, Dictionary<int, bool> trnCamAncestors) {
+            Dictionary<int, List<UnityEngine.Camera>> trnCams, Dictionary<int, bool> trnCamAncestors) {
 
             bool isAncestor = trnCamAncestors.ContainsKey(trn.GetInstanceID());
 

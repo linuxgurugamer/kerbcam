@@ -1,7 +1,9 @@
-﻿using System;
+using KerbCam.Core;
+using System;
 using UnityEngine;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
+
     public class PathRunner : MonoBehaviour, CameraController.Client {
         // Running state variables.
         private bool isRunning = false;
@@ -55,12 +57,12 @@ namespace KerbCam {
                 return;
             }
 
-            State.camControl.StartControlling(this);
+            StateHandler.camControl.StartControlling(this);
             isRunning = true;
 
             path.UpdateTransform(
-                State.camControl.FirstTransform,
-                State.camControl.SecondTransform,
+                StateHandler.camControl.FirstTransform,
+                StateHandler.camControl.SecondTransform,
                 curTime);
         }
 
@@ -69,7 +71,7 @@ namespace KerbCam {
                 return;
             }
             if (isRunning) {
-                State.camControl.StopControlling();
+                StateHandler.camControl.StopControlling();
                 isRunning = false;
             }
             isPaused = false;
@@ -102,8 +104,8 @@ namespace KerbCam {
                 }
 
                 path.UpdateTransform(
-                    State.camControl.FirstTransform,
-                    State.camControl.SecondTransform,
+                    StateHandler.camControl.FirstTransform,
+                    StateHandler.camControl.SecondTransform,
                     curTime);
             } catch (Exception e) {
                 DebugUtil.LogException(e);
@@ -112,7 +114,7 @@ namespace KerbCam {
 
         private void HandleToggleRun() {
             try {
-                State.SelectedPath.Runner.ToggleRunning();
+                StateHandler.SelectedPath.Runner.ToggleRunning();
             } catch (Exception e) {
                 DebugUtil.LogException(e);
             }
@@ -120,7 +122,7 @@ namespace KerbCam {
 
         private void HandleTogglePause() {
             try {
-                State.SelectedPath.Runner.TogglePause();
+                StateHandler.SelectedPath.Runner.TogglePause();
             } catch (Exception e) {
                 DebugUtil.LogException(e);
             }
@@ -131,8 +133,8 @@ namespace KerbCam {
         /// </summary>
         public void OnEnable() {
             try {
-                State.keyBindings.ListenKeyUp(BoundKey.KEY_PATH_TOGGLE_RUNNING, HandleToggleRun);
-                State.keyBindings.ListenKeyUp(BoundKey.KEY_PATH_TOGGLE_PAUSE, HandleTogglePause);
+                StateHandler.keyBindings.ListenKeyUp(BoundKey.KEY_PATH_TOGGLE_RUNNING, HandleToggleRun);
+                StateHandler.keyBindings.ListenKeyUp(BoundKey.KEY_PATH_TOGGLE_PAUSE, HandleTogglePause);
             } catch (Exception e) {
                 DebugUtil.LogException(e);
             }
@@ -143,8 +145,8 @@ namespace KerbCam {
         /// </summary>
         public void OnDisable() {
             try {
-                State.keyBindings.UnlistenKeyUp(BoundKey.KEY_PATH_TOGGLE_RUNNING, HandleToggleRun);
-                State.keyBindings.UnlistenKeyUp(BoundKey.KEY_PATH_TOGGLE_PAUSE, HandleTogglePause);
+                StateHandler.keyBindings.UnlistenKeyUp(BoundKey.KEY_PATH_TOGGLE_RUNNING, HandleToggleRun);
+                StateHandler.keyBindings.UnlistenKeyUp(BoundKey.KEY_PATH_TOGGLE_PAUSE, HandleTogglePause);
             } catch (Exception e) {
                 DebugUtil.LogException(e);
             }

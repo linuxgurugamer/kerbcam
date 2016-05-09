@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using KerbCam;
+using KerbCam.Camera;
 
 namespace KerbCamTest {
     public class FakeValueInterpolator : Interpolator2<string>.IValueInterpolator {

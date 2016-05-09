@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-namespace KerbCam {
+namespace KerbCam.Camera {
+
     public struct TransformState {
         private Transform trn;
         private Vector3 localPosition;

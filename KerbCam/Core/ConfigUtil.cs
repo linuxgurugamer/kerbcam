@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 
-namespace KerbCam {
+namespace KerbCam.Core {
     class ConfigUtil {
         public static string GetValue(ConfigNode node, string name, string _default) {
             string valueStr = node.GetValue(name);
