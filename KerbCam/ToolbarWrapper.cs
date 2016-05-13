@@ -1,5 +1,5 @@
-/*
-Copyright (c) 2013-2014, Maik Schreiber
+﻿/*
+Copyright (c) 2013-2016, Maik Schreiber
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -27,9 +27,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using UnityEngine;
-
 
 namespace KerbCam {
 
@@ -402,7 +400,7 @@ namespace KerbCam {
 	/// <example>
 	/// <code>
 	/// IButton button = ...
-	/// button.Visibility = new GameScenesVisibility(GameScenes.EDITOR, GameScenes.SPH);
+	/// button.Visibility = new GameScenesVisibility(GameScenes.EDITOR, GameScenes.FLIGHT);
 	/// </code>
 	/// </example>
 	/// <seealso cref="IButton.Visibility"/>

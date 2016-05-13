@@ -16,6 +16,7 @@ namespace KerbCam.Core
         public static CameraController camControl;
         public static ManualCameraControl manCamControl;
 
+        public static bool stockToolbar = true;
         public static bool developerMode = false;
 
         private static SimpleCamPath selectedPath;
@@ -60,6 +61,10 @@ namespace KerbCam.Core
             UnityEngine.Object.DontDestroyOnLoad(camControlObj);
             camControl = camControlObj.AddComponent<CameraController>();
             manCamControl = ManualCameraControl.Create();
+
+            LoadConfig();
+            LoadPaths();
+
         }
 
         public static SimpleCamPath SelectedPath
@@ -100,28 +105,36 @@ namespace KerbCam.Core
             ConfigNode config;
             try
             {
-                config = ConfigNode.Load("kerbcam.cfg");
+                config = ConfigNode.Load(KerbCamGlobals.AssemblyPath + "/kerbcam.cfg");
             }
             catch (NullReferenceException)
             {
                 Debug.LogWarning("KerbCam encountered NRE while loading kerbcam.cfg - file corrupted?");
                 return;
             }
+
             if (config == null)
             {
                 Debug.LogWarning("KerbCam could not load its configuration. This is okay if one has not been saved yet.");
                 return;
             }
+
             keyBindings.Load(config.GetNode("KEY_BINDINGS"));
+
+            ConfigUtil.Parse<bool>(config, "TOOLBAR_STOCK", out stockToolbar, true);
             ConfigUtil.Parse<bool>(config, "DEV_MODE", out developerMode, false);
         }
 
         public static void SaveConfig()
         {
             var config = new ConfigNode();
+
             keyBindings.Save(config.AddNode("KEY_BINDINGS"));
+
+            ConfigUtil.Write<bool>(config, "TOOLBAR_STOCK", stockToolbar);
             ConfigUtil.Write<bool>(config, "DEV_MODE", developerMode);
-            if (!config.Save("kerbcam.cfg"))
+
+            if (!config.Save(KerbCamGlobals.AssemblyPath + "/kerbcam.cfg"))
             {
                 Debug.LogError("Could not save to kerbcam.cfg");
             }
@@ -132,7 +145,7 @@ namespace KerbCam.Core
             ConfigNode config;
             try
             {
-                config = ConfigNode.Load("kerbcam-paths.cfg");
+                config = ConfigNode.Load(KerbCamGlobals.AssemblyPath + "/kerbcam-paths.cfg");
             }
             catch (NullReferenceException)
             {
@@ -164,7 +177,7 @@ namespace KerbCam.Core
             {
                 path.Save(config.AddNode("PATH"));
             }
-            if (!config.Save("kerbcam-paths.cfg"))
+            if (!config.Save(KerbCamGlobals.AssemblyPath + "/kerbcam-paths.cfg"))
             {
                 Debug.LogError("Could not save to kerbcam-paths.cfg");
             }

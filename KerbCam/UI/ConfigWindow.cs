@@ -71,9 +71,9 @@ namespace KerbCam.UI
                     DoBinding(kb);
                 }
 
-                StateHandler.developerMode = GUILayout.Toggle(
-                    StateHandler.developerMode,
-                    "Developer mode - enables experimental features.");
+                KerbCamLauncherButton.Instance.ShowButton = StateHandler.stockToolbar = GUILayout.Toggle(StateHandler.stockToolbar, "Use Stock toolbar");
+
+                StateHandler.developerMode = GUILayout.Toggle(StateHandler.developerMode,"Developer mode - enables experimental features.");
 
                 GUILayout.EndScrollView();
                 // END vertical scroll.

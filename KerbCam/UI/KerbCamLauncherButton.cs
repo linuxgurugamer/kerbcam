@@ -16,6 +16,7 @@
 //     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
+using KerbCam.Core;
 using KSP.UI;
 using KSP.UI.Screens;
 using System;
@@ -27,9 +28,10 @@ namespace KerbCam.UI
     [KSPAddon(KSPAddon.Startup.Flight, false)]
     class KerbCamLauncherButton : MonoBehaviour
     {
-        private static Texture s_IconTexture;
-        private ApplicationLauncherButton m_Button;
+        private static Texture s_IconTexture = null;
+        private ApplicationLauncherButton m_Button = null;
 
+        public static KerbCamLauncherButton Instance { get; private set; }
         /// <summary>
         ///     Gets the wrapped application launcher button object.
         /// </summary>
@@ -66,6 +68,25 @@ namespace KerbCam.UI
                 else
                 {
                     SetOff();
+                }
+            }
+        }
+
+        public bool ShowButton
+        {
+            get
+            {
+                return m_Button != null;
+            }
+            set
+            {
+                if (value && m_Button == null)
+                {
+                    addButton();
+                }
+                else if (!value && m_Button != null)
+                {
+                    removeButton();
                 }
             }
         }
@@ -137,6 +158,11 @@ namespace KerbCam.UI
 
         protected virtual void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        
             // cache icon texture
             if (s_IconTexture == null)
             {
@@ -223,10 +249,7 @@ namespace KerbCam.UI
         private void OnGUIApplicationLauncherReady()
         {
             // create button
-            if (ApplicationLauncher.Instance != null)
-            {
-                m_Button = ApplicationLauncher.Instance.AddModApplication(OnTrue, OnFalse, OnHover, OnHoverOut, OnEnable, OnDisable, ApplicationLauncher.AppScenes.ALWAYS, s_IconTexture);
-            }
+            ShowButton = StateHandler.stockToolbar;
 
             OnReady();
         }
@@ -234,12 +257,26 @@ namespace KerbCam.UI
         private void OnGUIApplicationLauncherUnreadifying(GameScenes scene)
         {
             // remove button
+            ShowButton = false;
+
+            OnUnreadifying();
+        }
+
+        private void addButton()
+        {
+            if (ApplicationLauncher.Instance != null && m_Button == null)
+            {
+                m_Button = ApplicationLauncher.Instance.AddModApplication(OnTrue, OnFalse, OnHover, OnHoverOut, OnEnable, OnDisable, ApplicationLauncher.AppScenes.ALWAYS, s_IconTexture);
+            }
+        }
+
+        private void removeButton()
+        {
             if (ApplicationLauncher.Instance != null && m_Button != null)
             {
                 ApplicationLauncher.Instance.RemoveModApplication(m_Button);
+                m_Button = null;
             }
-
-            OnUnreadifying();
         }
 
         private Texture loadLauncherIcon()

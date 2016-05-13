@@ -17,7 +17,34 @@ namespace KerbCam.UI
         private WindowResizer resizer;
         private bool cameraControlsOpen = false;
         private ManualCameraControlGUI cameraGui;
-        
+
+        private IButton blizzyToolbarButton;
+
+        internal MainWindow()
+        {
+            if (ToolbarManager.ToolbarAvailable)
+            {
+                blizzyToolbarButton = ToolbarManager.Instance.add("KerbCam", "toggle");
+
+                blizzyToolbarButton.Text = "KerbCam";
+                blizzyToolbarButton.TexturePath = "KerbCam/icon";
+                blizzyToolbarButton.ToolTip = "Toggle KerbCam window";
+                blizzyToolbarButton.Enabled = true;
+                blizzyToolbarButton.Visibility = new GameScenesVisibility(GameScenes.FLIGHT);
+                blizzyToolbarButton.OnClick += (e) =>
+                {
+                    ToggleWindow();
+                };
+            }
+        }
+
+        internal void OnDestroy()
+        {
+            if (blizzyToolbarButton != null)
+            {
+                blizzyToolbarButton.Destroy();
+            }
+        }
 
         /// <summary>
         ///     Gets the current instance if started or returns null.
