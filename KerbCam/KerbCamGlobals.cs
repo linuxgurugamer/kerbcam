@@ -27,7 +27,7 @@ namespace KerbCam
         /// <summary>
         ///     Current version of the KerbCam assembly.
         /// </summary>
-        public const string ASSEMBLY_VERSION = "0.16.0.0";
+        public const string ASSEMBLY_VERSION = "0.17.0.0";
         public static Assembly assembly = Assembly.GetCallingAssembly();
 
         private static string assemblyFile;
