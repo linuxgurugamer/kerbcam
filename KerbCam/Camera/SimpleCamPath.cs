@@ -372,8 +372,10 @@ namespace KerbCam.Camera {
             var lines = drawnPathObj.AddComponent<LineRenderer>();
             lines.material = new Material(Shader.Find("Particles/Additive"));
             lines.useWorldSpace = false;
-            lines.SetColors(Color.white, Color.white);
-            lines.SetWidth(0.2f, 0.2f);
+            lines.startColor = Color.white;
+            lines.endColor = Color.white;
+            lines.startWidth = 0.2f;
+            lines.endWidth = 0.2f;
             UpdateDrawn();
         }
 
@@ -413,7 +415,7 @@ namespace KerbCam.Camera {
             var lines = (LineRenderer)drawnPathObj.GetComponent("LineRenderer");
 
             int numVerts = (int)((transformsCurve.MaxParam - transformsCurve.MinParam) / 0.1f);
-            lines.SetVertexCount(numVerts);
+            lines.positionCount = numVerts;
 
             int i = 0;
             for (float t = transformsCurve.MinParam; i < numVerts && t < transformsCurve.MaxParam; t += 0.1f, i++) {
