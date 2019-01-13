@@ -78,10 +78,6 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>R:\KSP_1.5.1_dev\KSP_x64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Games\KSP - Dev\KSP_Data\Managed\System.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>R:\KSP_1.5.1_dev\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
