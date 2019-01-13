@@ -1,0 +1,6 @@
+0.19.1
+	Adopted by Linuxgurugamer
+	Added build scripts
+	Added AssemblyVersion.tt
+	Commented out AssemblyVersion in AssemblyVersion.cs 
+	Recompiled for 1.5.1 & 1.6.1
