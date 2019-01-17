@@ -5,6 +5,8 @@
 	Removed all old code for Blizzy toolbar and stock toolbar
 	Made new 38x38 icon 
 	Removed ToolbarWrapper.cs
+	Moved icons into PluginData/Textures
+	Moved the KerbCam-paths.cfg into PluginData, also changed name from all lowercase to current
 
 0.19.1
 	Adopted by Linuxgurugamer
