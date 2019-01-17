@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using ClickThroughFix;
 
 namespace KerbCam.UI
 {
@@ -49,7 +50,7 @@ namespace KerbCam.UI
             }
 
             GUI.skin = HighLogic.Skin;
-            resizer.Position = GUILayout.Window(
+            resizer.Position = ClickThruBlocker.GUILayoutWindow(
                 GetInstanceID(), resizer.Position, DrawGUI,
                 "KerbCam configuration",
                 resizer.LayoutMinWidth(),
@@ -71,7 +72,7 @@ namespace KerbCam.UI
                     DoBinding(kb);
                 }
 
-                KerbCamLauncherButton.Instance.ShowButton = StateHandler.stockToolbar = GUILayout.Toggle(StateHandler.stockToolbar, "Use Stock toolbar");
+                //KerbCamLauncherButton.Instance.ShowButton = StateHandler.stockToolbar = GUILayout.Toggle(StateHandler.stockToolbar, "Use Stock toolbar");
 
                 StateHandler.developerMode = GUILayout.Toggle(StateHandler.developerMode,"Developer mode - enables experimental features.");
 

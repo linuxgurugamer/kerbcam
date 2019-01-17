@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using ClickThroughFix;
 
 namespace KerbCam.UI
 {
@@ -17,11 +18,12 @@ namespace KerbCam.UI
         private WindowResizer resizer;
         private bool cameraControlsOpen = false;
         private ManualCameraControlGUI cameraGui;
-
+#if false
         private IButton blizzyToolbarButton;
-
+#endif
         internal MainWindow()
         {
+#if false
             if (ToolbarManager.ToolbarAvailable)
             {
                 blizzyToolbarButton = ToolbarManager.Instance.add("KerbCam", "toggle");
@@ -36,14 +38,17 @@ namespace KerbCam.UI
                     ToggleWindow();
                 };
             }
+#endif
         }
 
         internal void OnDestroy()
         {
+#if false
             if (blizzyToolbarButton != null)
             {
                 blizzyToolbarButton.Destroy();
             }
+#endif
         }
 
         /// <summary>
@@ -102,7 +107,7 @@ namespace KerbCam.UI
             }
 
             GUI.skin = HighLogic.Skin;
-            resizer.Position = GUILayout.Window(
+            resizer.Position = ClickThruBlocker.GUILayoutWindow(
                 GetInstanceID(), resizer.Position, DrawGUI,
                 string.Format(
                     "KerbCam [v{0}]",

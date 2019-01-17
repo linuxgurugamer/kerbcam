@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace KerbCam.Camera {
 
-    public class PathRunner : MonoBehaviour, CameraController.Client {
+    public sealed class PathRunner : MonoBehaviour, CameraController.Client {
         // Running state variables.
         private bool isRunning = false;
         private bool isPaused = false;

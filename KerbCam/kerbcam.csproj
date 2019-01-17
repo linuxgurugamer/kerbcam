@@ -49,6 +49,7 @@
     <Compile Include="Core\StateHandler.cs" />
     <Compile Include="DestructionProxy.cs" />
     <Compile Include="KerbCamGlobals.cs" />
+    <Compile Include="RegisterToolbar.cs" />
     <Compile Include="UI\ManualCameraControlGUI.cs" />
     <Compile Include="Camera\CameraController.cs" />
     <Compile Include="Core\ConfigUtil.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Camera\SimpleCamPath.cs" />
     <Compile Include="Camera\Interpolator.cs" />
     <Compile Include="Camera\SplineUtil.cs" />
-    <Compile Include="ToolbarWrapper.cs" />
     <Compile Include="Camera\TransformState.cs" />
     <Compile Include="UI\KerbCamLauncherButton.cs" />
     <Compile Include="UI\ConfigWindow.cs" />
@@ -77,6 +77,13 @@
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>R:\KSP_1.5.1_dev\KSP_x64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="ClickThroughBlocker">
+      <HintPath>R:\KSP_1.5.1_dev\GameData\000_ClickThroughBlocker\Plugins\ClickThroughBlocker.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="ToolbarControl">
+      <HintPath>R:\KSP_1.5.1_dev\GameData\001_ToolbarControl\Plugins\ToolbarControl.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>R:\KSP_1.5.1_dev\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>

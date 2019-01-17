@@ -52,7 +52,7 @@ namespace KerbCam.UI
             set { minSize.y = value; }
         }
 
-        // Helpers to return GUILayoutOptions for GUILayout.Window.
+        // Helpers to return GUILayoutOptions for ClickThruBlocker.GUILayoutWindow.
 
         public GUILayoutOption LayoutMinWidth()
         {

@@ -16,7 +16,7 @@ namespace KerbCam.Core
         public static CameraController camControl;
         public static ManualCameraControl manCamControl;
 
-        public static bool stockToolbar = true;
+        //public static bool stockToolbar = true;
         public static bool developerMode = false;
 
         private static SimpleCamPath selectedPath;
@@ -121,7 +121,7 @@ namespace KerbCam.Core
 
             keyBindings.Load(config.GetNode("KEY_BINDINGS"));
 
-            ConfigUtil.Parse<bool>(config, "TOOLBAR_STOCK", out stockToolbar, true);
+            //ConfigUtil.Parse<bool>(config, "TOOLBAR_STOCK", out stockToolbar, true);
             ConfigUtil.Parse<bool>(config, "DEV_MODE", out developerMode, false);
         }
 
@@ -131,7 +131,7 @@ namespace KerbCam.Core
 
             keyBindings.Save(config.AddNode("KEY_BINDINGS"));
 
-            ConfigUtil.Write<bool>(config, "TOOLBAR_STOCK", stockToolbar);
+            //ConfigUtil.Write<bool>(config, "TOOLBAR_STOCK", stockToolbar);
             ConfigUtil.Write<bool>(config, "DEV_MODE", developerMode);
 
             if (!config.Save(KerbCamGlobals.AssemblyPath + "/kerbcam.cfg"))
@@ -140,12 +140,13 @@ namespace KerbCam.Core
             }
         }
 
+        internal const string KERBCAM_PATHS = "GameData/KerbCam/PluginData/KerbCam-paths.cfg";
         public static void LoadPaths()
         {
             ConfigNode config;
             try
             {
-                config = ConfigNode.Load(KerbCamGlobals.AssemblyPath + "/kerbcam-paths.cfg");
+                config = ConfigNode.Load(KERBCAM_PATHS);
             }
             catch (NullReferenceException)
             {
@@ -177,7 +178,7 @@ namespace KerbCam.Core
             {
                 path.Save(config.AddNode("PATH"));
             }
-            if (!config.Save(KerbCamGlobals.AssemblyPath + "/kerbcam-paths.cfg"))
+            if (!config.Save(KERBCAM_PATHS))
             {
                 Debug.LogError("Could not save to kerbcam-paths.cfg");
             }

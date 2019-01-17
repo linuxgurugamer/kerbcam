@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using ClickThroughFix;
+
 
 namespace KerbCam.UI
 {
@@ -48,7 +50,7 @@ namespace KerbCam.UI
             }
 
             GUI.skin = HighLogic.Skin;
-            resizer.Position = GUILayout.Window(
+            resizer.Position = ClickThruBlocker.GUILayoutWindow(
                 GetInstanceID(), resizer.Position, DrawGUI,
                 "Choose vessel",
                 resizer.LayoutMinWidth(),
