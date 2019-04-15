@@ -1,3 +1,6 @@
+0.19.2.1
+	Version bump to fix bad build
+
 0.19.2
 	Fixed icon load
 	Added support for the ClickThroughBlocker
