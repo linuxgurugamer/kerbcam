@@ -72,13 +72,13 @@ namespace KerbCam.UI
 
             Rect r = GUILayoutUtility.GetRect(gcDrag, WindowStyles.WindowButtonStyle);
 
-            if (Event.current.type == EventType.mouseDown && r.Contains(mouse))
+            if (Event.current.type == EventType.MouseDown && r.Contains(mouse))
             {
                 isResizing = true;
                 resizeStart = new Rect(mouse.x, mouse.y, position.width, position.height);
                 //Event.current.Use();  // the GUI.Button below will eat the event, and this way it will show its active state
             }
-            else if (Event.current.type == EventType.mouseUp && isResizing)
+            else if (Event.current.type == EventType.MouseUp && isResizing)
             {
                 isResizing = false;
             }

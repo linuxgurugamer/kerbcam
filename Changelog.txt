@@ -1,3 +1,9 @@
+ChangeLog
+
+0.20.0
+	Updated for KSP 1.8
+	Updated WindowEvents with current spellings
+
 0.19.3
 	Added InstallChecker
 	Updated AssemblyVersion.tt
