@@ -1,6 +1,6 @@
 {
   "NAME": "KerbCam",
-  "URL": "http://ksp.spacetux.net/avc/kerbcam",
+  "URL": "http://ksp.spacetux.net/avc/KerbCam",
   "DOWNLOAD": "https://github.com/linuxgurugamer/kerbcam/releases",
   "GITHUB": {
     "USERNAME": "linuxgurugamer",
@@ -10,7 +10,7 @@
     "MAJOR": 0,
     "MINOR": 20,
     "PATCH": 0,
-    "BUILD": 0
+    "BUILD": 1
   },
   "KSP_VERSION_MIN": {
     "MAJOR": 1,

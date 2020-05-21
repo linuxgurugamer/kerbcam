@@ -1,5 +1,8 @@
 ChangeLog
 
+0.20.0.1
+	Fixed URL in .version file
+
 0.20.0
 	Updated for KSP 1.8
 	Updated WindowEvents with current spellings
