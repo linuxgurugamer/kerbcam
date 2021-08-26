@@ -75,13 +75,13 @@
     <Compile Include="UI\WindowStyles.cs" />
   </ItemGroup>
   <ItemGroup>
-     <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
-	   <Private>False</Private>
+    <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\Assembly*.dll">
+      <Private>False</Private>
     </Reference>
     <Reference Include="$(KSPDIR)\KSP_x64_Data\Managed\UnityEngine*.dll">
-	   <Private>False</Private>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="System" />	
+    <Reference Include="System" />
     <Reference Include="ClickThroughBlocker">
       <HintPath>$(KSPDIR)\GameData\000_ClickThroughBlocker\Plugins\ClickThroughBlocker.dll</HintPath>
     </Reference>
@@ -173,19 +173,33 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>
-	start /D D:\Users\jbb\github\kerbcam /WAIT deploy.bat  $(TargetDir) $(TargetFileName)
+set KSPDIR=$(KSPDIR)
 
-	if $(ConfigurationName) == Release (
+IF "%25KSPDIR%25"=="" (
 
-		start /D D:\Users\jbb\github\kerbcam /WAIT buildRelease.bat $(TargetDir) $(TargetFileName)
+	ECHO Configuration error - KSPDIR not specified in project.
 
-	)
+	ECHO Either set KSPDIR environment variable or edit BetterLoadSaveGame.Common.props
+
+	PAUSE
+
+	GOTO DONE
+
+)
+
+start /D $(SolutionDir) /WAIT deploy.bat  $(TargetDir) $(TargetFileName) $(TargetName)
+
+if $(ConfigurationName) == Release (	
+
+	start /D $(SolutionDir) /WAIT buildRelease.bat $(TargetDir) $(TargetFileName) $(TargetName)
+
+)
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>	set textTemplatingPath="%25ProgramFiles(x86)%25\Microsoft Visual Studio\2017\Community\Common7\IDE\texttransform.exe"
-
-	%25textTemplatingPath%25 "$(ProjectDir)AssemblyVersion.tt"
+    <PreBuildEvent>
+"$(DevEnvDir)\texttransform.exe" "$(ProjectDir)AssemblyVersion.tt"
+    
 </PreBuildEvent>
   </PropertyGroup>
 </Project>
