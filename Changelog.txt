@@ -1,5 +1,8 @@
 ChangeLog
 
+0.20.0.3
+	Fixed path for loading files (broken by new launcher)
+
 0.20.0.2
 	Added AssemblyFileVersion
 	Updated version file for 1.12

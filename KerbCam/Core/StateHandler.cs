@@ -140,7 +140,7 @@ namespace KerbCam.Core
             }
         }
 
-        internal const string KERBCAM_PATHS = "GameData/KerbCam/PluginData/KerbCam-paths.cfg";
+        internal static string KERBCAM_PATHS { get { return KSPUtil.ApplicationRootPath + "GameData/KerbCam/PluginData/KerbCam-paths.cfg"; } }
         public static void LoadPaths()
         {
             ConfigNode config;
