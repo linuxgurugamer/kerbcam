@@ -1,5 +1,8 @@
 ChangeLog
 
+0.20.0.4
+	Updated version file to use github for new version info
+
 0.20.0.3
 	Fixed path for loading files (broken by new launcher)
 
